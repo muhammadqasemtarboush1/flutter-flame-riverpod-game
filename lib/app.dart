@@ -1,7 +1,5 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'package:go_game/game/components/constents.dart';
-import 'package:go_game/game/go_green_game.dart';
+import 'package:go_game/router.dart';
 
 class GameApp extends StatefulWidget {
   const GameApp({super.key});
@@ -11,33 +9,13 @@ class GameApp extends StatefulWidget {
 }
 
 class _GameAppState extends State<GameApp> {
-  late final GoGreenGame game;
-  @override
-  void initState() {
-    super.initState();
-    game = GoGreenGame();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final router = goRouter();
+
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: SafeArea(
-          child: Center(
-            child: FittedBox(
-              child: SizedBox(
-                width: gameWidth,
-                height: gameHeight,
-                child: GameWidget(
-                  game: game,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
+      routerConfig: router,
     );
   }
 }

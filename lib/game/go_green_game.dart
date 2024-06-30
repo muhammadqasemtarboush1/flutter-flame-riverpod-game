@@ -17,11 +17,10 @@ class GoGreenGame extends FlameGame<GoGreenWorld>
               width: gameWidth, height: gameHeight),
         );
 
-  @override
-  FutureOr<void> onLoad() {
-    super.onLoad();
-    debugMode = true;
-  }
+  // @override
+  // FutureOr<void> onLoad() {
+  //   super.onLoad();
+  // }
 
   @override
   Color backgroundColor() {
@@ -31,7 +30,6 @@ class GoGreenGame extends FlameGame<GoGreenWorld>
   @override
   void onHorizontalDragUpdate(DragUpdateInfo info) {
     super.onHorizontalDragUpdate(info);
-    print(info);
     world.player.move(info.delta.global.x);
     world.player.move(info.delta.global.x);
   }
