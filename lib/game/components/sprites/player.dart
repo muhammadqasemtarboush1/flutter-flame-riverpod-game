@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
-import 'package:go_game/game/components/constents.dart';
+// import 'package:go_game/game/components/constents.dart';
 import '../../go_green_game.dart';
 
 class Player extends SpriteComponent with HasGameRef<GoGreenGame> {
@@ -11,7 +11,7 @@ class Player extends SpriteComponent with HasGameRef<GoGreenGame> {
   FutureOr<void> onLoad() async {
     sprite = await Sprite.load("player.png");
     size = Vector2.all(100);
-    position = Vector2(0, -(gameHeight / 2) - (size.y / 2));
+    position = Vector2(0, -(gameRef.size.y / 2) - (size.y / 2));
     angle = 0.5;
     add(RectangleHitbox());
     anchor = Anchor.center;
