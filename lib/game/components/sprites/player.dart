@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/foundation.dart';
+import 'package:go_game/game/components/constents.dart';
 // import 'package:go_game/game/components/constents.dart';
 import '../../go_green_game.dart';
 
@@ -10,7 +11,7 @@ class Player extends SpriteComponent with HasGameRef<GoGreenGame> {
   @override
   FutureOr<void> onLoad() async {
     sprite = await Sprite.load("player.png");
-    size = Vector2.all(100);
+    size = Vector2(playerWidth, playerHeight);
     position = Vector2(0, -(gameRef.size.y / 2) - (size.y / 2));
     angle = 0.5;
     add(RectangleHitbox());
@@ -22,6 +23,10 @@ class Player extends SpriteComponent with HasGameRef<GoGreenGame> {
     super.update(dt);
     //falling speed
     double newY = position.y + (dt * 400);
+
+    if (newY > -gameHeight / 4) {
+      newY = -gameHeight / 4;
+    }
     if (newY > (gameRef.size.y / 2) - (size.y / 2)) {
       newY = (gameRef.size.y / 2) - (size.y / 2);
     }

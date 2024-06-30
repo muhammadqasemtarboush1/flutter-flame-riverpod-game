@@ -25,7 +25,7 @@ class GoGreenGame extends FlameGame<GoGreenWorld>
 
   @override
   Color backgroundColor() {
-    return Colors.yellow;
+    return Colors.white;
   }
 
   @override
