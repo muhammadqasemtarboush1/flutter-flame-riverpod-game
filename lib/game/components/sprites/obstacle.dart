@@ -4,6 +4,7 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:go_game/game/components/constents.dart';
+import 'package:go_game/game/components/game_end_state.dart';
 import 'package:go_game/game/components/sprites/player.dart';
 import 'package:go_game/game/go_green_game.dart';
 
@@ -38,6 +39,8 @@ class ObstacleTrash extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
+      game.endCallback(GameEndState.trash);
+
       debugPrint('ObstacleTrash ');
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -54,6 +57,7 @@ class ObstacleWater extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
+      game.endCallback(GameEndState.water);
       debugPrint('ObstacleTrash ');
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -69,6 +73,8 @@ class ObstacleFire extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
+      game.endCallback(GameEndState.fire);
+
       debugPrint('ObstacleTrash ');
     }
     super.onCollisionStart(intersectionPoints, other);

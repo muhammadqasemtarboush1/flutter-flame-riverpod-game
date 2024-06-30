@@ -1,5 +1,5 @@
 import 'package:flame/components.dart';
-import 'package:flutter/material.dart';
+import 'package:go_game/game/components/game_end_state.dart';
 import 'package:go_game/game/components/sprites/obstacle.dart';
 import 'package:go_game/game/components/sprites/player.dart';
 
@@ -13,7 +13,7 @@ class BinTrash extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
-      debugPrint('oops  ');
+      game.endCallback(GameEndState.trash);
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -29,7 +29,7 @@ class BinRecycle extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
-      debugPrint('nice ');
+      game.endCallback(GameEndState.recycle);
     }
     super.onCollisionStart(intersectionPoints, other);
   }

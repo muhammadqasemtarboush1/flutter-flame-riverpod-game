@@ -1,16 +1,15 @@
-import 'dart:async';
-
 import 'package:flame/camera.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_game/game/components/constents.dart';
+import 'package:go_game/game/components/game_end_state.dart';
 import 'package:go_game/game/components/go_green_world.dart';
 
 class GoGreenGame extends FlameGame<GoGreenWorld>
     with HorizontalDragDetector, KeyboardEvents, HasCollisionDetection {
-  GoGreenGame()
+  GoGreenGame({required this.endCallback})
       : super(
           world: GoGreenWorld(),
           camera: CameraComponent.withFixedResolution(
@@ -22,6 +21,7 @@ class GoGreenGame extends FlameGame<GoGreenWorld>
   //   super.onLoad();
   // }
 
+  final void Function(GameEndState endState) endCallback;
   @override
   Color backgroundColor() {
     return Colors.white;
