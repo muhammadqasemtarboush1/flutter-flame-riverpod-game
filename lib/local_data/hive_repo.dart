@@ -26,9 +26,25 @@ class HiveRepository {
     debugPrint("LEVEL: ${(recycleEnd + 1).clamp(1, 5)}");
     return (recycleEnd + 1).clamp(1, 5);
   }
+
+  Future<void> resetGame() async {
+    await box.clear();
+  }
 }
 
 @Riverpod(keepAlive: true)
 HiveRepository hiveRepository(HiveRepositoryRef ref) {
   return HiveRepository();
+}
+
+@riverpod
+class CanPlaySound extends _$CanPlaySound {
+  @override
+  bool build() => Hive.box("gameData").get("playSound", defaultValue: true);
+
+  void toggle() {
+    final canPlay = Hive.box("gameData").get("playSound", defaultValue: true);
+    Hive.box("gameData").put("playSound", !canPlay);
+    state = !canPlay;
+  }
 }
