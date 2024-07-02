@@ -23,7 +23,7 @@ class Player extends SpriteComponent with HasGameRef<GoGreenGame> {
     super.update(dt);
     //falling speed
     double newY = position.y + (dt * 400);
-
+    // let the player stick on the first 1/4 of the screen
     if (newY > -gameHeight / 4) {
       newY = -gameHeight / 4;
     }

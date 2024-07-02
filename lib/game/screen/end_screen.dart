@@ -26,13 +26,13 @@ class _EndScreenState extends State<EndScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('END STATE ${widget.gameEndState.name}'),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
                 context.goNamed(AppRoute.game.name);
               },
               child: const Text('Play Again'),
             ),
-            ElevatedButton(
+            TextButton(
               onPressed: () {
                 context.goNamed(AppRoute.menu.name);
               },

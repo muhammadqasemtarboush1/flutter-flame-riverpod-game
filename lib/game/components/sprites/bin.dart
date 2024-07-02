@@ -13,6 +13,8 @@ class BinTrash extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
+
+      //end state
       game.endCallback(GameEndState.trash);
     }
     super.onCollisionStart(intersectionPoints, other);
@@ -29,6 +31,8 @@ class BinRecycle extends Obstacle {
   ) {
     if (other is Player) {
       other.removeFromParent();
+      //win state
+
       game.endCallback(GameEndState.recycle);
     }
     super.onCollisionStart(intersectionPoints, other);

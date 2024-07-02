@@ -18,39 +18,36 @@ class _GameScreenState extends State<GameScreen> {
   @override
   void initState() {
     super.initState();
-    game = GoGreenGame(endCallback: (GameEndState endState) {
-      switch (endState) {
-        case GameEndState.trash:
-          context.goNamed(AppRoute.endTrash.name);
-          break;
-        case GameEndState.water:
-          context.goNamed(AppRoute.endWater.name);
-          break;
-        case GameEndState.fire:
-          context.goNamed(AppRoute.endFire.name);
-          break;
-        case GameEndState.recycle:
-          context.goNamed(AppRoute.endRecycle.name);
-          break;
-        default:
-      }
-      // context.goNamed(AppRoute.endTrash.name);
-    });
+    game = GoGreenGame(
+      endCallback: (GameEndState endState) {
+        switch (endState) {
+          case GameEndState.trash:
+            context.goNamed(AppRoute.endTrash.name);
+            break;
+          case GameEndState.water:
+            context.goNamed(AppRoute.endWater.name);
+            break;
+          case GameEndState.fire:
+            context.goNamed(AppRoute.endFire.name);
+            break;
+          case GameEndState.recycle:
+            context.goNamed(AppRoute.endRecycle.name);
+            break;
+        }
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: FittedBox(
             child: SizedBox(
               width: gameWidth,
               height: gameHeight,
-              child: GameWidget(
-                game: game,
-              ),
+              child: GameWidget(game: game),
             ),
           ),
         ),
