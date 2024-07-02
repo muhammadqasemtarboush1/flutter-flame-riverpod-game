@@ -58,7 +58,7 @@ class ObstacleWater extends Obstacle {
     if (other is Player) {
       other.removeFromParent();
       game.endCallback(GameEndState.water);
-      debugPrint('ObstacleTrash ');
+      debugPrint('ObstacleWater ');
     }
     super.onCollisionStart(intersectionPoints, other);
   }
@@ -75,7 +75,7 @@ class ObstacleFire extends Obstacle {
       other.removeFromParent();
       game.endCallback(GameEndState.fire);
 
-      debugPrint('ObstacleTrash ');
+      debugPrint('ObstacleFire ');
     }
     super.onCollisionStart(intersectionPoints, other);
   }

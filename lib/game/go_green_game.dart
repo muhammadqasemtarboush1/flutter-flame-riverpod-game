@@ -9,14 +9,19 @@ import 'package:go_game/game/components/go_green_world.dart';
 
 class GoGreenGame extends FlameGame<GoGreenWorld>
     with HorizontalDragDetector, KeyboardEvents, HasCollisionDetection {
-  GoGreenGame({required this.endCallback})
-      : super(
+  GoGreenGame({
+    required this.endCallback,
+    required this.level,
+  }) : super(
           world: GoGreenWorld(),
           camera: CameraComponent.withFixedResolution(
-              width: gameWidth, height: gameHeight),
+            width: gameWidth,
+            height: gameHeight,
+          ),
         );
 
   final void Function(GameEndState endState) endCallback;
+  final int level;
   @override
   Color backgroundColor() {
     return Colors.white;
